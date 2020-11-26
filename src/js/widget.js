@@ -22,6 +22,8 @@ export class Widget
             let $self = $(this)
             let loadUrl = $self.attr('data-load-url')
 
+            $self.closest('.list-group').find('button').removeClass('active')
+            $self.addClass('active')
             $.get(loadUrl).then(r => $('#contents').html(r))
         })
     }
