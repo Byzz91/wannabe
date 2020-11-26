@@ -1,0 +1,24 @@
+html, body, ul, p, li, h1, h2, h3 {
+  margin: 0;
+  padding: 0; }
+
+body {
+  padding: 15px;
+  font-size: 14.5px; }
+
+.g-container .g-title {
+  font-size: 125%;
+  text-align: center; }
+
+.guide.select-leftmenu {
+  display: flex;
+  background-color: #eee;
+  min-height: 100%;
+  border-radius: 15px;
+  border-color: #9c9c9c;
+  text-align: center;
+  justify-content: center;
+  align-items: center; }
+
+
+/*# sourceMappingURL=main.css.map*/
