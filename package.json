@@ -8,7 +8,9 @@
     "watch": "npx webpack -w",
     "dev": "npx webpack --mode development",
     "prod": "npx webpack --mode production",
-    "server": "webpack-dev-server --open --mode development"
+    "server": "webpack-dev-server --open --mode development",
+    "predeploy": "npm run prod",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -19,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/Byzz91/wannabe/issues"
   },
-  "homepage": "https://github.com/Byzz91/wannabe#readme",
+  "homepage": "https://byzz91.github.io/wannabe/",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.5.3",
@@ -40,6 +42,7 @@
     "@babel/preset-env": "^7.12.7",
     "babel-loader": "^8.2.1",
     "css-loader": "^5.0.1",
+    "gh-pages": "^3.1.0",
     "mini-css-extract-plugin": "^1.3.1",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.0",
