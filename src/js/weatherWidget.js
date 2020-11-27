@@ -57,10 +57,10 @@ export class WeatherWidget extends Widget
                     <label>
                         <input type="radio" name="$direction" value="${city}">
                         <span class="dl city-name">${this.toKR(city)}</span>
-                        <span class="dl temp">temp: ${data.main?.temp}</span>
-                        <span class="dl temp-min">temp-min: ${data.main?.temp_min}</span>
-                        <span class="dl temp-max">temp-max: ${data.main?.temp_max}</span>
-                        <span class="dl weather">(${data.weather[0]?.description})</span>
+                        <span class="dl temp">평균: ${data.main?.temp} ℃</span>
+                        <span class="dl temp-min">최저: ${data.main?.temp_min} ℃</span>
+                        <span class="dl temp-max">최고: ${data.main?.temp_max} ℃</span>
+                        <span class="dl weather">${data.weather[0]?.description}</span>
                     </label>
                 </li>
             `)

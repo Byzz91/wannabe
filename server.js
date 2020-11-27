@@ -9,8 +9,8 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'))
 });
 
-app.get('/_weather.html', function(req, res) {
-    res.sendFile(path.join(__dirname + '/_weather.html'))
+app.get('/widget/weather.html', function(req, res) {
+    res.sendFile(path.join(__dirname + '/widget/weather.html'))
 });
 
 app.listen(7777)

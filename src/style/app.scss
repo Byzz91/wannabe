@@ -134,6 +134,10 @@ body {
         font-size: 100%;
         &.city-name {
             color: #ffc107;
+            font-size: 125%;
+        }
+        &.temp-min {
+            color: #979797;
         }
         &.weather {
             color: #00bcd4;
