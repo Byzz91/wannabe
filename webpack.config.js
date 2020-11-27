@@ -14,10 +14,20 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          /* devMode ? 'style-loader' : */
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: (resoucePath, context) => {
+                return path.relative(path.dirname(resoucePath), context) + '/'
+              }
+            }
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader'
+          }
         ],
       },
       {
@@ -39,10 +49,17 @@ module.exports = {
         ],
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-proposal-class-properties']
+            "presets": [
+              [
+                "@babel/preset-env", {
+                  "targets": {"chrome": "55"}, /* chrome 55 이상으로 지정 */
+                  "debug": true
+                }
+              ],
+            ],
+            "plugins": ['@babel/plugin-proposal-class-properties']
           }
         }
       }

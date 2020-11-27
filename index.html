@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div class="container g-container">
+<div class="container-fluid g-container">
     <div class="row">
         <div class="col-lg-3">
             <h1 class="g-title" data-app-name>Wannabe Generator</h1>
@@ -51,17 +51,21 @@
                     <span>오늘의 명언</span>
                 </button>
             </div>
+            <hr>
+            <button type="button" class="btn btn-warning btn-lg btn-block" id="download-image">Download Image</button>
         </div>
-        <div class="col-lg-3" id="contents">
-            <div class="guide select-leftmenu">왼쪽에서 메뉴를 선택</div>
+        <div class="col-lg-3 guide align-center" id="contents">
+            <span>왼쪽에서 메뉴선택</span>
         </div>
         <div class="col-lg-6">
-
+            <!-- <canvas id="canvas" width="720" height="1460"></canvas> -->
+            <svg class="svg" id="svg"></svg>
         </div>
     </div>
 </div>
 
-<script src="./dist/bundle.js"></script>
+<div id="progress" class="progress hidden"><div class="bar"></div></div>
 
+<script src="./dist/bundle.js"></script>
 </body>
 </html>

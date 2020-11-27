@@ -21,11 +21,17 @@
   },
   "homepage": "https://github.com/Byzz91/wannabe#readme",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.5.3",
     "bootstrap-icons": "^1.1.0",
+    "d3": "^6.2.0",
     "express": "^4.17.1",
+    "file-loader": "^6.2.0",
     "jquery": "^3.5.1",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1",
+    "save-svg-as-png": "^1.4.17",
+    "url-loader": "^4.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.8",

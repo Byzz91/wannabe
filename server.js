@@ -3,6 +3,7 @@ let app = express()
 let path = require('path')
 
 app.use('/dist', express.static('dist'))
+app.use('/assets', express.static('assets'))
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'))
