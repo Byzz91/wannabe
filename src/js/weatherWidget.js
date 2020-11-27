@@ -56,7 +56,7 @@ export class WeatherWidget extends Widget
                 <li>
                     <label>
                         <input type="radio" name="$direction" value="${city}">
-                        <span class="dl city-name">${this.toKR(city)}</span>
+                        <span class="dl city-name">${WeatherWidget.toKR(city)}</span>
                         <span class="dl temp">평균: ${data.main?.temp} ℃</span>
                         <span class="dl temp-min">최저: ${data.main?.temp_min} ℃</span>
                         <span class="dl temp-max">최고: ${data.main?.temp_max} ℃</span>
@@ -79,7 +79,7 @@ export class WeatherWidget extends Widget
      * 도시이름을 한글이름으로 바꿈
      * @param String eng 
      */
-    toKR(eng)
+    static toKR(eng)
     {
         eng = eng.toLowerCase()
 
@@ -89,9 +89,11 @@ export class WeatherWidget extends Widget
             case 'busan':
                 return '부산'
             case 'hongsung':
-                return '홍성 💋'
+                return '홍성'
             case 'daegu':
                 return '대구'
+            case 'incheon':
+                return '인천'
             default:
                 return eng
         }
@@ -148,36 +150,41 @@ export class WeatherWidget extends Widget
                 group_id: 'group-l-w',
                 city: $('[name="weather-left"]:checked').val(),
                 guessIcon: null,
-                data: null,
+                temp: null,
                 pos: {
-                    x: 500,
-                    y: 52
+                    icon: { x: 500, y: 52 },
+                    typo: { x: 496, y: 160 }
                 }
             },
             right: {
                 group_id: 'group-r-w',
                 city: $('[name="weather-right"]:checked').val(),
                 guessIcon: null,
-                data: null,
-                pos: {
-                    x: 607,
-                    y: 52
+                temp: null,
+                pos: { 
+                    icon: { x: 607, y: 52 },
+                    typo: { x: 606, y: 160 }
                 }
             }
         }
 
+        let ndata
+
         if (render.left.city != undefined) {
-            render.left.data = this.data[render.left.city]
-            render.left.guessIcon = WeatherWidget.guessInfoGraphic(render.left.data.weather[0]?.description)
+            ndata = this.data[render.left.city]
+            render.left.guessIcon = WeatherWidget.guessInfoGraphic(ndata.weather[0]?.description)
             render.left.guessIcon = `./assets/weather_${render.left.guessIcon}.png`
+            render.left.temp = ndata.main.temp
         }
         
         if (render.right.city != undefined) {
-            render.right.data = this.data[render.right.city]
-            render.right.guessIcon = WeatherWidget.guessInfoGraphic(render.right.data.weather[0]?.description)
+            ndata = this.data[render.right.city]
+            render.right.guessIcon = WeatherWidget.guessInfoGraphic(ndata.weather[0]?.description)
             render.right.guessIcon = `./assets/weather_${render.right.guessIcon}.png`
+            render.right.temp = ndata.main.temp
         }
 
+        console.log('drawWeather', render)
         this.svg.drawWeather(render)
     }
 }
