@@ -144,3 +144,22 @@ body {
         }
     }
 }
+
+.container-maxim {
+    label {
+        margin-bottom: 0;
+        cursor: pointer;
+    }
+    .media {
+        border-bottom: 1px solid #d8d8d8;
+        margin-bottom: 10px;
+    }
+    .media-body {
+        cursor: pointer;
+        
+        .textarea {
+            width: 100%;
+            min-height: 150px;
+        }
+    }
+}

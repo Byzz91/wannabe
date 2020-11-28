@@ -85,7 +85,38 @@ export class SVG
     }
 
     /**
-     * 
+     * 오늘의 명언 데이터를 그린다
+     * @param String maxim 
+     */
+    drawMaxim(maxim)
+    {
+        const groupId = 'maxim'
+        const lineMargin = 28
+        this.svg.selectAll(`.${groupId}`).remove()
+
+        maxim = maxim.split(/\n/)
+        maxim = _.filter(maxim)
+        console.log(maxim)
+
+        _.each(maxim, (line, idx) => {
+            let lastLine = ((maxim.length - 1) == idx) ? 15 : 0;
+
+            this.svg.append('text')
+                .text(line)
+                .attr('class', groupId)
+                .attr('font-family', 'NanumSquare')
+                .attr('font-size', '24px')
+                .attr('fill', '#303b4b')
+                .attr('letter-spacing', 0)
+                .attr('text-anchor', 'middle')
+                // .attr('width', 150)
+                .attr('x', 360)
+                .attr('y', 1330 + (idx * lineMargin) + lastLine)
+        })
+    }
+
+    /**
+     * SVG로 그려진 이름을 다운로드 한다 
      */
     download()
     {
