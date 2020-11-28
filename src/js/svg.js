@@ -116,6 +116,38 @@ export class SVG
     }
 
     /**
+     * 뉴스를 
+     * @param Array stack 
+     */
+    drawNews(stack)
+    {
+        const groupId = 'news'
+        const lineMargin = 46
+
+        this.svg.selectAll(`.${groupId}`).remove()
+
+        _.each(stack, (news, idx) => {
+            let text = this.svg.append('text')
+                .text(`∙ ${news.title}`)
+                .attr('class', groupId)
+                .attr('font-family', 'gulim')
+                .attr('font-size', '26px')
+                .attr('letter-spacing', -1)
+                .attr('fill', '#4c4d4d')
+                .attr('x', 60)
+                .attr('y', 330 + (idx * lineMargin))
+
+            if (news.type == 'focus' || news.type == 'headline') {
+                text.attr('font-weight', 'bolder')
+            }
+
+            if (news.type == 'focus') {
+                text.attr('fill', '#365683')
+            }
+        })
+    }
+
+    /**
      * SVG로 그려진 이름을 다운로드 한다 
      */
     download()

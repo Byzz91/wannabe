@@ -36,7 +36,7 @@ export class WeatherWidget extends Widget
             this.data = await super.doApi('/heo/weather')
         }
         
-        if (!_.isObject) {
+        if (!_.isObject(this.data)) {
             window.alert('데이터를 불러올 수 없습니다.')
             return
         }

@@ -30,4 +30,11 @@ app.get('/widget/maxim.json', function (req, res) {
     res.sendFile(path.join(__dirname + '/widget/maxim.json'))
 })
 
+/**
+ * 오늘의 명언 - 위젯 페이지
+ */
+app.get('/widget/news.html', function (req, res) {
+    res.sendFile(path.join(__dirname + '/widget/news.html'))
+})
+
 app.listen(7777)

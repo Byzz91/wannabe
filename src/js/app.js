@@ -5,6 +5,7 @@ import "../style/app.scss"
 // import { Canvas } from "./canvas"
 import { SVG } from './svg'
 import { MaximWidget } from "./maximWidget"
+import { NewsWidget } from "./newsWidget"
 
 class App
 {
@@ -18,11 +19,13 @@ class App
     {
         this.svg = new SVG()
         this.widget = {}
-        // 오늘의 날씨 
+        
+        /**
+         * Widget Instance
+         */
         this.widget.weather = new WeatherWidget($('#weather-widget'), this.svg)
-
-        // 오늘의 명언
         this.widget.maxim = new MaximWidget($('#maxim-widget'), this.svg)
+        this.widget.news = new NewsWidget($('#news-widget'), this.svg)
 
         this.data = {}
         this.install()
