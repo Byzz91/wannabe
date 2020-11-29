@@ -1,6 +1,7 @@
 import $ from 'jquery'
 import * as d3 from 'd3'
 import { saveSvgAsPng } from 'save-svg-as-png'
+import 'moment/locale/ko'
 import moment from 'moment'
 import { WeatherWidget } from './weatherWidget'
 import { group } from 'd3'
@@ -15,6 +16,26 @@ export class SVG
         this.svg = d3.select('#svg')
         this.svg.attr('version', 1.1)
                 .attr('xmlns', 'http://www.w3.org/2000/svg')
+
+        // moment
+        moment.locale('ko')
+    }
+
+    /**
+     * 오늘날짜를 그린다
+     */
+    drawCurrentDatetime()
+    {
+        let createDatetime = moment().format('YYYY. MM. DD (ddd) HH:mm')
+
+        this.svg.append('text')
+            .text(createDatetime)
+            .attr('font-family', 'NanumSquare')
+            .attr('font-size', 20)
+            .attr('fill', '#4c4d4d')
+            .attr('letter-spacing', -1)
+            .attr('x', 450)
+            .attr('y', 277)
     }
 
     /**
@@ -116,7 +137,7 @@ export class SVG
     }
 
     /**
-     * 뉴스를 
+     * 뉴스
      * @param Array stack 
      */
     drawNews(stack)
@@ -130,8 +151,8 @@ export class SVG
             let text = this.svg.append('text')
                 .text(`∙ ${news.title}`)
                 .attr('class', groupId)
-                .attr('font-family', 'gulim')
-                .attr('font-size', '26px')
+                .attr('font-family', 'NanumBarunGothic')
+                .attr('font-size', 26)
                 .attr('letter-spacing', -1)
                 .attr('fill', '#4c4d4d')
                 .attr('x', 60)
@@ -144,6 +165,61 @@ export class SVG
             if (news.type == 'focus') {
                 text.attr('fill', '#365683')
             }
+        })
+    }
+
+    /**
+     * 코스피 등을 그린다
+     */
+    drawFinance(finance)
+    {
+        console.log(finance)
+        const groupId = 'finance'
+        const leftMargin = 200
+        const leftStart = 150
+        const topStart = 1160
+
+        this.svg.selectAll(`.${groupId}`).remove()
+
+        _.each(finance, (fnc, idx) => {
+            let arrow = (fnc.updown == '상승') ? '▲' : '▼'
+            let arrowColor = (fnc.updown == '상승') ? '#fa3232' : '#0064b4'
+
+            // 예) 코스피
+            this.svg.append('text')
+                .text(fnc.title)
+                .attr('class', groupId)
+                .attr('font-family', 'NanumSquare')
+                .attr('font-size', 26)
+                .attr('letter-spacing', -1)
+                .attr('text-anchor', 'middle')
+                .attr('fill', '#4c4d4d')
+                .attr('x', leftStart + (idx * leftMargin))
+                .attr('y', topStart)
+            
+            // 예) 2617.76
+            this.svg.append('text')
+                .text(fnc.point)
+                .attr('class', groupId)
+                .attr('font-family', 'NanumSquare')
+                .attr('font-size', 34)
+                .attr('letter-spacing', 0)
+                .attr('text-anchor', 'middle')
+                .attr('fill', '#252729')
+                .attr('x', leftStart  + (idx * leftMargin))
+                .attr('y', topStart + 50)
+
+            this.svg.append('text')
+                .text(`${arrow} ${fnc.status}`)
+                .attr('class', groupId)
+                .attr('font-family', 'NanumSquare')
+                .attr('font-size', 20)
+                .attr('font-weight', 'bold')
+                .attr('letter-spacing', 0)
+                .attr('text-anchor', 'middle')
+                .attr('fill', arrowColor)
+                .attr('x', leftStart + (idx * leftMargin))
+                .attr('y', topStart + 80)
         })
     }
 

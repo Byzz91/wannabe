@@ -9,6 +9,31 @@ body {
     padding: 15px;
     font-size: 14.5px;
     background-color: #545b62 !important;
+    height: 1500px;
+}
+
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 700;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 300;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
 }
 
 .progress {
@@ -77,12 +102,17 @@ body {
         width: 720px;
         height: 1460px;
     }
+    .g-infor {
+        color: #eee;
+        font-size: 100%;
+    }
 }
 
 .guide {
     display: flex;
     background-color: #eee;
-    min-height: 100%;
+    max-height: 1460px;
+    overflow-y: scroll;
     border-radius: 15px;
     border-color: rgb(156, 156, 156);
     padding: 15px 0;
@@ -165,7 +195,7 @@ body {
 }
 
 .container-news {
-    padding: 0 !important;
+    padding: 5px 8px !important;
 
     .media {
         margin-bottom: 10px; 
@@ -188,5 +218,28 @@ body {
     }
     h4.news-group {
         margin-top: 20px;
+    }
+}
+
+.container-finance {
+    .media {
+        margin: 30px 10px;
+    }
+    .point {
+        display: inline-block;
+        width: 75px;
+        text-align: center;
+        line-height: 50px;
+        font-size: 120%;
+
+        &.up {
+            color: #fa3232;
+        }
+        &.down {
+            color: #0064b4;
+        }
+    }
+    .media-body {
+        padding-left: 15px;
     }
 }

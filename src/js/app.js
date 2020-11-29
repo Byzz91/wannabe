@@ -6,6 +6,7 @@ import "../style/app.scss"
 import { SVG } from './svg'
 import { MaximWidget } from "./maximWidget"
 import { NewsWidget } from "./newsWidget"
+import { FinanceWidget } from './financeWidget'
 
 class App
 {
@@ -26,6 +27,7 @@ class App
         this.widget.weather = new WeatherWidget($('#weather-widget'), this.svg)
         this.widget.maxim = new MaximWidget($('#maxim-widget'), this.svg)
         this.widget.news = new NewsWidget($('#news-widget'), this.svg)
+        this.widget.finance = new FinanceWidget($('#finance-widget'), this.svg)
 
         this.data = {}
         this.install()
@@ -40,6 +42,9 @@ class App
 
         // 캔바스에 가이드 이미지를 올린다
         this.svg.drawGuide()
+
+        // 캔바스에 오늘 날짜를 그린다
+        this.svg.drawCurrentDatetime()
 
         // 다운로드 버튼 바인딩
         $('#download-image').on('click', this.svg.download.bind(this.svg))

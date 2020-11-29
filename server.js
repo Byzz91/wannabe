@@ -37,4 +37,11 @@ app.get('/widget/news.html', function (req, res) {
     res.sendFile(path.join(__dirname + '/widget/news.html'))
 })
 
+/**
+ * 코스피 위젯
+ */
+app.get('/widget/finance.html', (req, res) => {
+    res.sendFile(path.join(__dirname + '/widget/finance.html'))
+})
+
 app.listen(7777)

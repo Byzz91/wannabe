@@ -152,8 +152,8 @@ export class WeatherWidget extends Widget
                 guessIcon: null,
                 temp: null,
                 pos: {
-                    icon: { x: 500, y: 52 },
-                    typo: { x: 496, y: 160 }
+                    icon: { x: 485, y: 52 },
+                    typo: { x: 481, y: 160 }
                 }
             },
             right: {
@@ -162,8 +162,8 @@ export class WeatherWidget extends Widget
                 guessIcon: null,
                 temp: null,
                 pos: { 
-                    icon: { x: 607, y: 52 },
-                    typo: { x: 606, y: 160 }
+                    icon: { x: 597, y: 52 },
+                    typo: { x: 596, y: 160 }
                 }
             }
         }

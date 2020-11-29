@@ -56,7 +56,7 @@ export class NewsWidget extends Widget
         </div>
         `)
 
-        _.each(['focus', 'headline', 'comments'], (group, __) => {
+        _.each(['focus', 'headline', 'comments', 'many_read'], (group, __) => {
             let title = String()
 
             switch (group) {
@@ -68,6 +68,9 @@ export class NewsWidget extends Widget
                 break
                 case 'comments':
                     title = '댓글 많이 달린'
+                break
+                case 'many_read':
+                    title = '많이본 랭킹뉴스'
                 break
             }
             
