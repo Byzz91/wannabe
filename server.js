@@ -9,6 +9,10 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'))
 });
 
+app.get('/favicon.ico', function(req, res) {
+    res.sendFile(path.join(__dirname + '/favicon.ico'))
+});
+
 /**
  * 오늘의 날씨 - 위젯 페이지
  */
@@ -42,6 +46,13 @@ app.get('/widget/news.html', function (req, res) {
  */
 app.get('/widget/finance.html', (req, res) => {
     res.sendFile(path.join(__dirname + '/widget/finance.html'))
+})
+
+/**
+ * 코로나 관련 기사
+ */
+app.get('/widget/covid.html', (req, res) => {
+    res.sendFile(path.join(__dirname + '/widget/covid.html'))
 })
 
 app.listen(7777)

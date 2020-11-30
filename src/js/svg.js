@@ -151,8 +151,8 @@ export class SVG
             let text = this.svg.append('text')
                 .text(`∙ ${news.title}`)
                 .attr('class', groupId)
-                .attr('font-family', 'NanumBarunGothic')
-                .attr('font-size', 26)
+                .attr('font-family', 'NanumGothic')
+                .attr('font-size', 22)
                 .attr('letter-spacing', -1)
                 .attr('fill', '#4c4d4d')
                 .attr('x', 60)
@@ -220,6 +220,77 @@ export class SVG
                 .attr('fill', arrowColor)
                 .attr('x', leftStart + (idx * leftMargin))
                 .attr('y', topStart + 80)
+        })
+    }
+
+    /**
+     * 코비드 상황판을 그린다
+     * @param Object data 
+     */
+    drawCovid(data)
+    {
+        console.log(data)
+        const groupId = 'covid'
+        const leftMargin = 150
+        const leftStart = 150
+        const topStart = 1025
+
+        this.svg.selectAll(groupId).remove()
+
+        this.svg.append('svg:image')
+            .attr('xlink:href', './assets/gov.png')
+            .attr('class', groupId)
+            .attr('x', 60)
+            .attr('y', 953)
+            .attr('width', 25)
+            .attr('height', 25)
+
+        this.svg.append('text')
+            .text('코로나 국내 발생 현황')
+            .attr('class', groupId)
+            .attr('font-family', 'NanumSquare')
+            .attr('font-size', 18)
+            .attr('letter-spacing', -1)
+            .attr('font-weight', 'bold')
+            .attr('fill', '#4c4d4d')
+            .attr('x', 90)
+            .attr('y', 970)
+
+        this.svg.append('text')
+            .text(data['기준시각'])
+            .attr('class', groupId)
+            .attr('font-family', 'NanumSquare')
+            .attr('font-size', 18)
+            .attr('letter-spacing', -1)
+            .attr('fill', '#5c5c5c')
+            .attr('x', 520)
+            .attr('y', 973)
+
+        _.each(['확진환자', '격리해제', '격리중', '사망'], (key, idx) => {
+            this.svg.append('text')
+                .text(key)
+                .attr('class', groupId)
+                .attr('font-family', 'NanumSquare')
+                .attr('font-size', 26)
+                .attr('letter-spacing', -1)
+                .attr('text-anchor', 'middle')
+                .attr('fill', '#4c4d4d')
+                .attr('x', leftStart + (idx * leftMargin))
+                .attr('y', topStart)
+
+            let color = data[key].substr(0, 1) == '+' ? '#fa3232' : '#0064b4'
+
+            this.svg.append('text')
+                .text(data[key])
+                .attr('class', groupId)
+                .attr('font-family', 'NanumSquare')
+                .attr('font-size', 32)
+                .attr('font-weight', 'bold')
+                .attr('letter-spacing', 0)
+                .attr('text-anchor', 'middle')
+                .attr('fill', color)
+                .attr('x', leftStart + (idx * leftMargin))
+                .attr('y', topStart + 40)
         })
     }
 

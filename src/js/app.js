@@ -7,11 +7,12 @@ import { SVG } from './svg'
 import { MaximWidget } from "./maximWidget"
 import { NewsWidget } from "./newsWidget"
 import { FinanceWidget } from './financeWidget'
+import { CovidWidget } from "./covidWidget"
 
 class App
 {
     appName = '허팀장 Generator'
-    appVersion = 0.1
+    appVersion = 1.0
 
     /**
      * App Constructor
@@ -28,6 +29,7 @@ class App
         this.widget.maxim = new MaximWidget($('#maxim-widget'), this.svg)
         this.widget.news = new NewsWidget($('#news-widget'), this.svg)
         this.widget.finance = new FinanceWidget($('#finance-widget'), this.svg)
+        this.widget.covid = new CovidWidget($('#covid-widget'), this.svg)
 
         this.data = {}
         this.install()

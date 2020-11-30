@@ -1,14 +1,12 @@
 import { Widget } from "./widget";
 import $ from 'jquery'
-import _ from 'lodash'
-import moment from 'moment'
 
-export class FinanceWidget extends Widget
+export class CovidWidget extends Widget
 {
     /**
      * Constructor
      * @param jQuery $binder 
-     * @param SVG svg 
+     * @param svg svg 
      */
     constructor($binder, svg)
     {
@@ -19,16 +17,15 @@ export class FinanceWidget extends Widget
         this.data = null
 
         super.bindClick(this.$binder, this.boot.bind(this))
+
     }
 
     /**
-     * boot
+     * 메뉴 클릭 후 발동하는 메소드
      */
     async boot()
     {
-        if (this.data == null) {
-            this.data = await super.doApi('/heo/finance')
-        }
+        this.data = await super.doApi('/heo/covid19')
 
         if (!_.isObject(this.data)) {
             window.alert('데이터를 불러올 수 없습니다.')
@@ -39,7 +36,7 @@ export class FinanceWidget extends Widget
     }
 
     /**
-     * 데이터 정리
+     * 데이터 정리 후 실제 화면에 출력 
      */
     prepare()
     {
@@ -48,40 +45,36 @@ export class FinanceWidget extends Widget
 
         html.push(`
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>${moment(this.data.created_at).fromNow()}</strong>
+            <strong>${this.data['기준시각']}</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         `)
 
-        _.each(this.data.finance, (finance, idx) => {
-            let arrow = (finance.updown == '상승') ? '▲' : '▼'
-            let arrowCls = (finance.updown == '상승') ? 'up' : 'down'
-
+        _.each(['격리중', '격리해제', '사망', '확진환자'], (key, _) => {
             html.push(`
             <li class="media">
-                <span class="point ${arrowCls}">${arrow} ${finance.status}</span>
+                <span class="point">${this.data[key]}</span>
                 <div class="media-body">
-                    <h5 class="mt-0 mb-1">${finance.title}</h5>
-                    <span>${finance.point}</span>
+                    <h5 class="mt-0 mb-1">${key}</h5>
                 </div>
             </li>
             `)
         })
 
-        $('#widget-finance-contents > ul').html(html.join('\r\n'))
-        $('.alert').alert() // bs5
-        
+        $('#widget-covid-contents > ul').html(html.join('\r\n'))
+        $('.alert').alert()
+
         this.handle()
         super.done()
     }
 
     /**
-     * 실제 그려질 데이터를 정리 후 SVG 객체로 전달
+     * SVG로 데이터 전달
      */
     handle()
     {
-        this.svg.drawFinance(this.data.finance)
+        this.svg.drawCovid(this.data)
     }
 }
