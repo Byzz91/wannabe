@@ -151,7 +151,7 @@ export class SVG
             let text = this.svg.append('text')
                 .text(`∙ ${news.title}`)
                 .attr('class', groupId)
-                .attr('font-family', 'NanumGothic')
+                .attr('font-family', 'MalgunGothic')
                 .attr('font-size', 22)
                 .attr('letter-spacing', -1)
                 .attr('fill', '#4c4d4d')

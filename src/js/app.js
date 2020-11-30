@@ -12,7 +12,7 @@ import { CovidWidget } from "./covidWidget"
 class App
 {
     appName = '허팀장 Generator'
-    appVersion = 1.0
+    appVersion = 1.1
 
     /**
      * App Constructor
